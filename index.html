@@ -412,12 +412,109 @@ Database settings are in config paramaters file (app/config/parameters.yml)
 					<h2>Return a JSON Object</h2>
 					<hr/>
 					<ul>
-						<li>Update Product Controller</li>
+						<li>Make a /product/{id}.json endpoint</li>
+                        
+                        <li>
+                            Copy the showActionJson method to the *top* of your ProductController:
+                            <a href="http://bit.ly/dcon-sf-json">http://bit.ly/dcon-sf-json</a>
+                        </li>
 					</ul>
 				</section>
+			</section>
+            
+			<section>
 				<section>
-					<h3>Update Product Controller</h3>
-					<a href="http://bit.ly/dcon-sf-json">http://bit.ly/dcon-sf-json</a>
+					<h2>Create a "Service"</h2>
+					<hr/>
+					<ul>
+						<li>Create a ProductSerializer class</li>
+                        <li>Give it a serialize method:
+                        
+<pre><code>class ProductSerializer {
+    public function serialize($product)
+    {
+        // copy the code to turn the Product
+        // object into JSON
+    
+        return $json;
+    }
+}</code></pre>
+                        
+                        </li>
+                        <li>
+                            Instantiate the ProductSerializer in your controller
+                            and use it.
+                        </li>
+					</ul>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Register a service</h2>
+					<hr/>
+					<ul>
+						<li>
+                            Register your class as a service
+
+<pre style="width: 100%;"><code class="yml"># app/config/config.yml
+services:
+    my.product_serializer:
+        class: DrupalCon\FirstBundle\Service\ProductSerializer
+        arguments: []</code></pre>
+                        </li>
+                        <li>Use the service in your controller
+                        
+<pre style="width: 100%;"><code>// src/DrupalCon/FirstBundle/Controller/ProductController.php
+public function showJsonAction($id)
+{
+    // ...
+    
+    $productSerializer = $this->container
+        ->get('product_serializer');
+
+    $json = $productSerializer->serialize($product);
+
+    return new Response($json);
+}
+</code></pre>
+                        
+                        </li>
+					</ul>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Dependency Injection</h2>
+					<hr/>
+<pre style="width: 100%;"><code>class ProductSerializer
+{
+    private $router;
+
+    public function __construct(Router $router)
+    {
+        $this->router = $router;
+    }    
+    public function serialize(Product $product)
+    {
+        $data = array(
+            // ...
+            'url' => $this->router->generate('product_show', array('id' => $product->getId()))
+        );
+        return json_encode($data);
+    }
+}
+</code></pre>
+
+
+
+<pre style="width: 100%;"><code class="yml"># app/config/config.yml
+services:
+    my.product_serializer:
+        class: DrupalCon\FirstBundle\Service\ProductSerializer
+        arguments: ["@router"]</code></pre>
+
 				</section>
 			</section>
 
