@@ -46,8 +46,10 @@
 				
 				<section>
 					<section>
-						<h3>If you don't have the project runing and see this screen let us know</h3>
-						<img src="" alt="">
+						<h3>If you don't have the project running and see this screen, <strong>you're not ready to start!</strong></h3>
+                        <p>Setup instructions: <a href="http://bit.ly/dcon-sf-setup">http://bit.ly/dcon-sf-setup</a></p>
+						<img src="/assets/images/welcome.png" alt="" style="max-height: 50%;">
+                        <p>And ask us for help! :)</p>
 					</section>
 
 					<section>
@@ -520,9 +522,9 @@ hello_template:
 
 				<section>
 					<h3>Generate entity</h3>
-<pre><code class='bash'>$php app/console doctrine:generate:entity
+<pre><code class='bash'>$ php app/console doctrine:generate:entity
 
-The Entity Shorcut Name: FirstBundle:Product
+The Entity Shortcut Name: FirstBundle:Product
 
 Configuration Format: annotation
 
@@ -534,31 +536,35 @@ Fields:
 -- name: price
 -- type: float
 
-hit enter wildly
-
-(if you mess up ctrl + c and start again)
+hit enter wildly!!! Woh!
+(i.e. agree to the default values for everything else)
 </code></pre>
+<p>(if you mess up ctrl + c and start again)</p>
 				</section>
 
 				<section>
 					<h3>Generate CRUD</h3>
 <pre><code class='bash'>
-$php app/console doctrine:generate:crud
+$ php app/console doctrine:generate:crud
 
 Entity Shorcut name: FirstBundle:Product
 
 Generate write actions: yes
 
-hit enter wildly
-
+hit enter wildly!!! Woh!
+(i.e. agree to the default values for everything else!)
 </code></pre>
+
+<p>
+    add these lines to import the routes
+</p>
 
 <pre class="yml"><code>
 # app/config/routing.yml
 # ...
-fisrtundle_product:
-	resource: "@FirstBundle/Controller"
-	type: annotation
+firstbundle_product:
+    resource: "@FirstBundle/Controller"
+    type: annotation
 
 </code></pre>
 				</section>
@@ -567,12 +573,13 @@ fisrtundle_product:
 					<h3>Create Database and Schema</h3>
 <code class="bash"><pre>
 
-$php app/console doctrine:database:create
-$php app/console doctrine:schema:create
-
-Database settings are in config paramaters file (app/config/parameters.yml)
+$ php app/console doctrine:database:create
+$ php app/console doctrine:schema:create
 
 </code></pre>
+<p>
+    Database settings are in config parameters file (app/config/parameters.yml)
+</p>
 
 				</section>
 			</section>
@@ -655,7 +662,7 @@ public function showJsonAction($id)
 
 			<section>
 				<section>
-					<h2>Dependency Injection</h2>
+					<h2>Dependency Injection!</h2>
 					<hr/>
 <pre style="width: 100%;"><code>class ProductSerializer
 {
