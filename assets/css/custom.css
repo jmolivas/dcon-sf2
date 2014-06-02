@@ -24,6 +24,9 @@ div.text-medium, code.text-medium, ul.text-medium, pre code.text-medium {
 div.text-small, code.text-small, ul.text-small, pre code.text-small {
 	font-size: 80%;
 }
+span.text-small {
+    font-size: 60%;
+}
 
 div.text-big, code.text-big, ul.text-big, pre code.text-big {
 	font-size: 120%;
@@ -66,8 +69,8 @@ h2.medium {
 
 footer {
 	position: absolute;
-	width: 100px;
-	bottom: 1em;
+    width: 100%;
+	bottom: .5em;
 	left: 3em;
 
 	margin: 0 0 0 0;
@@ -78,6 +81,15 @@ footer {
 	text-transform: none;
 	text-shadow: none;
 	font-size: 1.5em;
+}
+footer img {
+    width: 300px;
+    float: left;
+}
+footer .stuck {
+    float: left;
+    margin-left: 20px;
+    line-height: 12px;
 }
 
 ul.bullets li {
