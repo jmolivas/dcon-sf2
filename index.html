@@ -46,9 +46,179 @@
 				
 				<section>
 					<section>
-						<h3>If you don't have the project runing and see this screen</h3>
+						<h3>If you don't have the project runing and see this screen let us know</h3>
 						<img src="" alt="">
 					</section>
+
+					<section>
+						<ul>
+							<li>Our goal is to leave no development behind</li>
+							<li>Milestons as separate branches</li>
+							<li>If you $git -f checkout</li>
+						</ul>						
+					</section>
+				</section>
+
+				<section>
+					<h2>But first, some basics</h2>
+				</section>
+
+				<section>
+					<section>
+						<h3>The HTTP Lifecycle</h3>
+						<p>Communication on the web is always a two step process:
+						<ul>
+							<li>The client sends an HTTP request</li>
+							<li>The server send back an HTTP response</li>
+						</ul>
+						</p>
+					</section>
+
+					<section>
+						<h3>The Request</h3>
+<pre><code class="text-bigger">
+GET /foo HTTP/1.1
+Host: yourdomain.com
+Accept: text/html
+User-Agent: Mozilla/5.0 (Macintosh)
+
+</code></pre>
+					</section>
+
+					<section>
+						<h3>
+This simple message communicates everything necessary about exactly which resource the client is requesting
+						</h3>
+					</section>
+
+					<section>
+						<h3>The Response</h3>
+<pre><code class="text-bigger">
+￼HTTP/1.1 200 OK
+Date: Tue, 04 Jun 2011 21:05:05 GMT
+Server: lighttpd/1.4.19
+Content-Type: text/html
+<html>
+  <h1>Foo!</h1>
+</html>
+</code></pre>
+
+					</section>
+
+					<section>
+						<h3>HTTP Request-Response</h3>
+						<p>In every application, and every language, you always have the same goal:</p>
+						<p>To read the HTTP request and create the appropriate HTTP response</p>
+					</section>	
+
+					<section>
+						<h3>Request and Response in PHP</h3>
+						<ul class="text-left">
+							<li class="text-left">PHP gives you access to the HTTP request via several “superglobal” arrays. 
+							<br/><br/>
+							</li>
+							<li class="text-left">To create the HTTP response, use the the header() method to set the header lines and print content to populate the request body.</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Request and Responses in Symfony</h3>
+						<p>
+						<ul  class="text-left">
+							<li>Symfony offers a Request and Response objects that abstract the HTTP text messages into an object-oriented format.<br/><br/></li>
+							<li>
+							The main goal of the framework is to return a response in a optimized and effective way therefore we may say Symfony2 is an HTTP framework, it’s a Request/Response framework. 
+	
+							</li>
+						</ul>
+						</p>
+					</section>
+
+					<section>
+						<h3>The Symfony Application Flow</h3>
+						<img src="assets/images/request-flow.png" 
+						class="no-border" />
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>PHP Namespaces</h2>
+						<hr/>
+					</section>
+
+					<section>
+						<h3>PHP Classes</h3>
+						By default, a PHP class is identified by its name, which must be unique within your project
+<pre><code class="php text-big">
+class Product
+{
+    private $foo = 'bar';
+    public function __construct()
+    {
+		...
+    } 
+}
+
+</code></pre>
+					</section>
+
+					<section>
+						<h3>Referencing a non-namespaced class</h3>
+						<p>
+							This type of class has no namespace. It can be referenced in two different ways
+						</p>
+<pre><code class="php text-big">
+￼// works sometimes
+$product = new Product();
+// works always
+$product = new \Product();
+
+</code></pre>
+					</section>
+
+					<section>
+						<h3>PHP Namespaces</h3>
+						<p>Are a way of encapsulating items. Bringing the ability to organize and group related classes and also to avoid name collision.</p>
+<pre><code class="php text-big">
+namespace DrupalCon\FirstBundle\Entity;
+
+class Product {
+// ...
+}
+
+</code></pre>
+					</section>
+
+					<section>
+						<h3>Referencing a namespaced class</h3>
+						<p>A namespaced class can be referenced in two different ways.</p>
+<pre><code class="php text-big">
+￼// reference by its fully-qualified name
+$product = new DrupalCon\FirstBundle\Entity\Product();
+
+</code></pre>
+
+<pre><code class="php text-big">
+￼// import the namespace to file
+use DrupalCon\FirstBundle\Entity\Product;
+
+$product = new Product();
+
+</code></pre>
+					</section>
+
+					<section>
+						<h2>What is Symfony</h2>
+						<h3>
+							Symfony is a group of standalone components and other standalone PHP libraries.
+						</h3>
+					</section>
+				</section>
+
+				<section>
+					<h2>Ready to Code?</h2>
+					<hr/>
 				</section>
 
 				<section>
@@ -469,7 +639,6 @@ services:
 public function showJsonAction($id)
 {
     // ...
-    
     $productSerializer = $this->container
         ->get('my.product_serializer');
 
@@ -507,8 +676,6 @@ public function showJsonAction($id)
 }
 </code></pre>
 
-
-
 <pre style="width: 100%;"><code class="yml"># app/config/config.yml
 services:
     my.product_serializer:
@@ -516,6 +683,184 @@ services:
         arguments: ["@router"]</code></pre>
 
 				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Drupal 8 module</h2>
+					<hr/>
+				</section>
+
+				<section>
+					<h3>Drupal 8 console</h3>
+					<p>
+						The purpose of this project is to leverage the Symfony Console Component to provide a CLI tool to automate the creation of Drupal 8 modules.
+					</p>
+					<br/>
+					<p>
+						The purpose of this project is to leverage the Symfony Console Component to provide a CLI tool to automate the creation of Drupal 8 modules.
+					</p>
+				</section>
+
+				<section>
+						<h3>Where do I find the project?</h3>
+						<p>
+							<br/>
+							Do you have a Drupal user ?
+						</p>
+						<p>
+							<a href="https://drupal.org/project/console">
+								https://drupal.org/project/console
+							</a>
+						</p>
+						<p>
+							<br/>
+							Do you have a Github account ?
+						</p>
+						<p>
+						<a href="https://github.com/hechoendrupal/DrupalAppConsole">
+							https://github.com/hechoendrupal/DrupalAppConsole
+						</a>
+						</p>
+				</section>
+
+				<section>
+					<h3>Code generators</h3>
+<pre style="width: 100%;"><code>
+$ bin/console generate:module
+$ bin/console generate:controller
+$ bin/console generate:form
+$ bin/console generate:plugin:block
+
+</code></pre>
+				</section>
+
+				<section>
+					<h3>Create a Service</h3>
+					<h4>lorempixel.services.yml</h4>
+<pre style="yml"><code>
+parameters:
+  lorempixel.categories:
+    - 'abstract'
+    - 'animals'
+    - 'business'
+    - 'cats'
+    - 'city'
+    - 'food'
+    - 'nightlife'
+    - 'fashion'
+    - 'people'
+    - 'nature'
+    - 'sports'
+    - 'technics'
+    - 'transport'
+
+services:
+  lorempixel.generator:
+    class: Drupal\lorempixel\LorempixelGenerator
+    arguments: ['@config.factory', %lorempixel.categories%]
+    tags:
+      - { name: lorempixel_generator }
+
+</code></pre>
+				</section>
+
+				<section>
+					<h3>Service Class</h3>
+					<h4>src/lorempixel/LorempixelGenerator.php</h4>
+<pre style="php"><code>&lt;?php
+
+namespace Drupal\lorempixel;
+
+use Drupal\Core\Config\ConfigFactory;
+
+class LorempixelGenerator
+{
+
+  protected $config;
+
+  protected $categories;
+
+  public function __construct(ConfigFactory $config, $categories) {
+    $this->config = $config;
+    $this->categories = $categories;
+  }
+
+  public function getImage($category = NULL, $width = NULL, $height = NULL){
+    $settingsForm = $this->config->get("lorempixel.settingsform_config");
+
+    $width = $width?$width:$settingsForm->get("width");
+    $height = $height?$height:$settingsForm->get("height");
+
+    if (!$this->isValidCategory($category))
+      $category = $settingsForm->get("category");
+
+    return '<img src="' . $this->getImageUrl($width, $height, $category) . '" />';
+  }
+
+  private function isValidCategory($category = NULL) {
+    if ($category) {
+      return in_array($category, $this->categories);
+    }
+
+    return false;
+  }
+
+  private function getImageUrl($width, $height, $category)
+  {
+    $url = "http://lorempixel.com/{$width}/{$height}/{$category}";
+
+    return $url;
+  }
+}
+</code></pre>
+				</section>
+
+				<section>
+					<h3>Add new ImageController</h3>
+					<h4>lorempixel.routing.yml</h4>
+<pre><code class="yml">
+lorempixel.image:
+  path: '/lorempixel/image/{category}'
+  defaults:
+    _content: '\Drupal\lorempixel\Controller\ImageController::image'
+    _title: 'Lorem Pixel Image Generator'
+    width: 0
+    height: 0
+    category: ''
+  requirements:
+    _permission: 'access content'
+
+</code></pre>
+				</section>
+
+				<section>
+					<h3>Calling the service</h3>
+<pre><code class="php">
+ /**
+   * @param  string $category
+   * @return string
+   */
+  public function image($category) {
+    return $this->lorempixel_generator->getImage($category);
+  }
+
+</code></pre>
+
+<pre><code class="php">
+ /**
+   * {@inheritdoc}
+   */
+  public function build()
+  {
+    return [
+      '#markup' => $this->lorempixel_generator->getImage('cats', 140, 100),
+    ];
+  }
+
+</code></pre>
+				</section>
+
 			</section>
 
 			</div>

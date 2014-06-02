@@ -31,6 +31,7 @@ div.text-big, code.text-big, ul.text-big, pre code.text-big {
 
 div.text-bigger, code.text-bigger, ul.text-bigger, pre code.text-bigger {
 	font-size: 160%;
+	line-height: 100%;
 }
 
 h1.medium {
