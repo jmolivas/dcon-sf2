@@ -325,7 +325,7 @@ $product = new Product();
 					<section>
 						<h2>Bundles</h2>
 						<p>
-							A bundle is a directory that contains the files related to a specific feature in our application, including PHP classes, configuration and asset files as Stylesheets, JavaScript and images.
+							A Bundle is a directory that contains the files related to a specific feature in our application, including PHP classes, configuration and asset files as Stylesheets, JavaScript and images.
 						</p>
 						<aside class="notes">
 							A bundle is similar to a plugin or module in other paltforms. Everything in Symfony is a bundle, including both the core framework functionality and the code written for your application.
@@ -430,7 +430,7 @@ $ rm -rf src/Acme
 					<p>
 					<ul class="bullets">
 						<li>Create the directory <em>'src/DrupalCon/FirstBundle'</em></li>
-						<li>Create the Bundle Class here '<em>FirstBundle.php'</em></li>
+						<li>Create the <em>'FirstBundle'</em> Class at <em>'src/DrupalCon/FirstBundle'</em></li>
 						<li>Register the Bundle in the <em>'AppKernel'</em> Class</li>
                         <li>Hi-Five your neighbor</li>
 					</ul>
@@ -507,7 +507,7 @@ class AppKernel extends Kernel
 					<p>
 					<ul class="bullets">
 						<li>Create & Import the route file</li>
-						<li>Create the route <em>'/'</em></li>
+						<li>Create a Route with path to <em>'/'</em></li>
 						<li>Create the <em>'HelloController'</em> Class & <em>'index'</em> Action</li>
 					</ul>
 					</p>
@@ -622,10 +622,10 @@ throw new \Exception('Something went wrong!');
 					<hr>
 					<p>
 					<ul class="bullets">
-						<li>Extend HelloController from <em>'Controller'</em></li>
-						<li>Create the Route <em>'/template'</em></li>
+						<li>Extend <em>'HelloController'</em> from <em>'Controller'</em></li>
+						<li>Create a Route with path to <em>'/template'</em></li>
 						<li>Create the <em>'template'</em> Action</li>
-						<li>Return a response rendering template</li>
+						<li>Return a response rendering a template</li>
 						<li>Create the 'template.html.twig' Template file</li>
 					</ul>
 					</p>
@@ -651,7 +651,7 @@ class HelloController extends Controller
 				</section>
 
 				<section>
-					<h3>Return a response rendering template</h3>
+					<h3>Return a response rendering a template</h3>
 					<h4>src/DrupalCon/FirstBundle/Resources/config/routing.yml</h4>
 
 <pre><code class='yml'>
@@ -692,21 +692,21 @@ hello_template:
     path:     /hello/{name}
     defaults: { _controller: FirstBundle:Hello:name }
 </code></pre>
+<h4>src/DrupalCon/FirstBundle/Controller/HelloController.php</h4>
+<pre><code class='php'>public function nameAction($name) {
+  return $this->render(
+    'FirstBundle:Hello:name.html.twig',
+    [ 'name' => $name ]
+  );
+}
+</code></pre>
 <h4>@FirstBundle/resources/views/Hello/name.html.tiwg</h4>
 <pre><code class='twig'>Hello {{name}}
-</code></pre>
-<h4>src/DrupalCon/FirstBundle/Controller/HelloController.php</h4>
-<pre><code class='php'>  public function nameAction($name) {
-    return $this->render(
-      'FirstBundle:Hello:name.html.twig',
-      [ 'name' => $name ]
-    );
-  }
 </code></pre>
 				</section>
 
 				<section>
-					<h3>Base Controller methods</h3>
+					<h3>Base Controller helper methods</h3>
 <pre><code class='php text-small'>
 // Gets a service by id. Return an object
 get(string $id)
@@ -888,20 +888,20 @@ $ php app/console doctrine:schema:create
 				</section>
 
 				<section>
-					<h2>Create a "Service"</h2>
+					<h2>Create a Service Class</h2>
 					<hr/>
 					<ul>
 						<li>Create a <em>'ProductSerializer'</em> Class</li>
                         <li>Give it a <em>'serialize'</em> method:
                         
 <pre><code>class ProductSerializer {
-    public function serialize($product)
-    {
+    public function serialize($product) {
         // Copy the code to turn the Product object into JSON
         $data = array(
 	        //...
         );
-        return json_encode($data);
+        $json = json_encode($data);
+        return $json;
     }
 }</code></pre>
                         
@@ -1074,7 +1074,6 @@ class DefaultController extends ControllerBase
 			<section>
 		    	<h3>templates/hello.html.twig</h3>
 <pre><code class="twig">
-
 <div class="acme-hello-text">
   <h1>Hello {{ name }}!</h1>
 </div>
@@ -1210,11 +1209,8 @@ class DefaultBlock extends BlockBase {
 }
 </code></pre>
 			</section>
-
-			<section>
-				<h2>Drupal Console Demo</h2>
-			</section>
-
+		</section>
+		<section>
 			<section>
 				<h2>Symfony & PHP resources</h2>
 				<ul>
@@ -1236,11 +1232,11 @@ class DefaultBlock extends BlockBase {
 				</ul>
 			</section>
 
-				<section>
-					<h2>Thanks</h2>
-					<hr/>
-					<h3>Questions & feedback</h3>
-				</section>
+			<section>
+				<h2>Thanks</h2>
+				<hr/>
+				<h3>Questions & feedback</h3>
+			</section>
 
 			</section>
 
