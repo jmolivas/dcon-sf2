@@ -520,15 +520,24 @@ class AppKernel extends Kernel
 
 
 				<section>
-					<h3>Import the Route</h3>
-					<h4>app/config/routing.yml</h4>
+					<h3>Create & Import the route file</h3>
+<br/>
+<h4>Create route file</h4>
+<p>
+<em>'src/DrupalCon/FirstBundle/Resources/config/routing.yml'</em>
+</p>
+<br/>
+<p>
+					<h4>Import route file</h4>
 <pre><code class='yml'>
+# app/config/routing.yml
+
 firstbundle:
     resource: "@FirstBundle/Resources/config/routing.yml"
     prefix:   /
 
 </code></pre>
-
+</p>
 				</section>
 				
 				<section>
