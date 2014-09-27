@@ -16,13 +16,13 @@ div.text-left, ul.text-left, li.text-left, p.text-left {
 	text-align: left;
 }
 
-div.text-medium, code.text-medium, ul.text-medium, pre code.text-medium {
-	font-size: 100%;
+div.text-medium, code.text-medium, ul.text-medium, pre code.text-medium, p.text-medium {
+	font-size: 110%;
 	line-height: 100%;
 }
 
-div.text-small, code.text-small, ul.text-small, pre code.text-small {
-	font-size: 80%;
+div.text-small, code.text-small, ul.text-small, pre code.text-small, p.text-small {
+	font-size: 90%;
 }
 span.text-small {
     font-size: 60%;
@@ -56,6 +56,12 @@ h2.medium {
 	font-size: 1.75em;
 }
 
+h3.medium {
+	text-transform: none;
+	font-size: 1.35em;
+	line-height: 125%;
+}
+
 .reveal section img.no-border {
 	border: 0px;
 	box-shadow:none;
@@ -82,16 +88,79 @@ footer {
 	text-shadow: none;
 	font-size: 1.5em;
 }
-footer img {
+/*footer img {
     width: 300px;
-    float: left;
-}
+}*/
 footer .stuck {
     float: left;
     margin-left: 20px;
     line-height: 12px;
 }
 
+ul li {
+	margin-bottom: 50px;
+}
+
 ul.bullets li {
 	line-height: 200%;
 }
+
+.reveal h5 {
+	font-size: .90em;
+}
+
+.reveal pre code {
+	padding-left: 15px;
+}
+
+/*
+.reveal pre code.line-numbers {
+	padding-left: 0px;
+}
+
+.reveal pre code span.line-number {
+	color: #CCC;
+	display:inline-block;
+	background-color: #111;
+	font-weight: normal;
+	font-size: .85em;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+*/
+.reveal ul li h4, .reveal ul li h5, .reveal ul li h6 {
+	margin-bottom: 5px
+}
+
+div.align-left {
+	float: left;
+	padding-right: 10px;
+}
+
+div.align-right {
+	float: right;
+	margin-right: 150px;
+}
+
+.reveal h3.name  {
+  padding-top: 15px;
+  font-size: 1.40em;
+}
+
+.reveal h4.name {
+  padding-top: 15px;
+}
+
+/* .reveal pre code {
+	background-color: #fcfcfc;
+
+}
+
+.reveal pre {
+	box-shadow: 0 0 3px rgba(0, 0, 0, 1);
+}
+
+.tomorrow-comment, pre .comment, pre .title, pre .python {
+	color: #333;
+} */
+
