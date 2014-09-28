@@ -505,61 +505,25 @@ class AppKernel extends Kernel
 					<h2>Your own Hello World Page</h2>
 					<hr>
 					<p>
-					<ul class="bullets">
-						<li>Create <em>'src/DrupalCon/FirstBundle/Resources/config/routing.yml'</em></li>
-						<li>Import new file at <em>'app/config/routing.yml'</em></li>
-						<li>Create a Route with path to <em>'/'</em></li>
-						<li>Create the <em>'HelloController'</em> Class & <em>'index'</em> Action</li>
+					<ul >
+						<li>
+						<p>
+							Create the <em>'HelloController'</em> Class & <em>'index'</em> Action at <em>'src/FirstBundle/Controller'</em> directory
+						</p>
+						</li>
+						<li><p>
+							Create a Route with path to <em>'/'</em> at <em>'src/FirstBundle/Resources/config/routing.yml'</em> file
+						</p></li>
+						<li><p>
+							Import new file at <em>'app/config/routing.yml'</em>
+						</p></li>
 					</ul>
 					</p>
+					<br/>
 					<p>
                         Follow this!
 					<a target="_blank" href="http://bit.ly/sf2-CreatingPages">http://bit.ly/sf2-CreatingPages</a> (step 1 and 2)
 					</p>
-				</section>
-
-
-				<section>
-					<h3>Create & Import the route file</h3>
-<br/>
-<h4>Create route file</h4>
-<p>
-<em>'src/DrupalCon/FirstBundle/Resources/config/routing.yml'</em>
-</p>
-<br/>
-<p>
-					<h4>Import route file</h4>
-<pre><code class='yml'>
-# app/config/routing.yml
-
-firstbundle:
-    resource: "@FirstBundle/Resources/config/routing.yml"
-    prefix:   /
-
-</code></pre>
-</p>
-				</section>
-				
-				<section>
-					<h3>Create the Route</h3>
-					<h4>src/DrupalCon/FirstBundle/Resources/config/routing.yml</h4>
-<pre><code class='yml'>
-hello_plain:
-    path:     /
-    defaults: { _controller: FirstBundle:Hello:index }
-
-</code></pre>
-<p>
-	Controller naming pattern 'bundle:controller:action'
-</p>
-<br/>
-<p>
-	You can also use the fully-qualified path name.
-</p>
-<pre><code class='yml text'>
-_controller: DrupalCon\FirstBundle\Controller\HelloController::indexAction
-
-</code></pre>
 				</section>
 
 				<section>
@@ -582,6 +546,43 @@ class HelloController
 
 </code></pre>
 				</section>
+
+				<section>
+					<h3>Create the Route</h3>
+					<h4>src/DrupalCon/FirstBundle/Resources/config/routing.yml</h4>
+<pre><code class='yml'>
+hello_plain:
+    path:     /
+    defaults: { _controller: FirstBundle:Hello:index }
+
+</code></pre>
+<p>
+	Controller naming pattern 'bundle:controller:action'
+</p>
+<br/>
+<p>
+	You can also use the fully-qualified path name.
+</p>
+<pre><code class='yml text'>
+_controller: DrupalCon\FirstBundle\Controller\HelloController::indexAction
+
+</code></pre>
+				</section>
+
+
+				<section>
+					<h3>Import route file</h3>
+<pre><code class='yml'>
+# app/config/routing.yml
+
+firstbundle:
+    resource: "@FirstBundle/Resources/config/routing.yml"
+    prefix:   /
+
+</code></pre>
+</p>
+				</section>
+				
 				<section>
 <h3>Other type of Responses</h3>
 <pre><code class='php text-medium'>
@@ -633,10 +634,10 @@ throw new \Exception('Something went wrong!');
 					<p>
 					<ul class="bullets">
 						<li>Extend <em>'HelloController'</em> from <em>'Controller'</em></li>
-						<li>Create a Route with path to <em>'/template'</em></li>
+						<li>Create the 'template.html.twig' Template file</li>
 						<li>Create the <em>'template'</em> Action</li>
 						<li>Return a response rendering a template</li>
-						<li>Create the 'template.html.twig' Template file</li>
+						<li>Create a Route with path to <em>'/template'</em></li>
 					</ul>
 					</p>
 					<p>
@@ -661,25 +662,6 @@ class HelloController extends Controller
 				</section>
 
 				<section>
-					<h3>Return a response rendering a template</h3>
-					<h4>src/DrupalCon/FirstBundle/Resources/config/routing.yml</h4>
-
-<pre><code class='yml'>
-hello_template:
-    path:     /template
-    defaults: { _controller: FirstBundle:Hello:template }
-
-</code></pre>
-					<h4>src/DrupalCon/FirstBundle/Controller/HelloController.php</h4>
-<pre><code class='php'>
-  public function templateAction()
-  {
-    return $this->render('FirstBundle:Hello:template.html.twig');
-  }
-
-</code></pre>
-				</section>
-				<section>
 					<h3>Create the Template file</h3>
 					<h4>@FirstBundle/Resources/views/Hello/template.html.twig</h4>
 <pre><code class='twig'>
@@ -692,16 +674,33 @@ hello_template:
 {% endblock %}
 
 </code></pre>
+				</section>
 
+				<section>
+					<h3>Return a response rendering a template</h3>
+					<h4>src/DrupalCon/FirstBundle/Controller/HelloController.php</h4>
+<pre><code class='php'>
+  public function templateAction()
+  {
+    return $this->render('FirstBundle:Hello:template.html.twig');
+  }
+
+</code></pre>
+
+				<h4>src/DrupalCon/FirstBundle/Resources/config/routing.yml</h4>
+<pre><code class='yml'>
+hello_template:
+    path:     /template
+    defaults: { _controller: FirstBundle:Hello:template }
+
+</code></pre>
 				</section>
 
 				<section>
 					<h3>Render Template & pass paramater</h3>
-<h4>src/DrupalCon/FirstBundle/Resources/config/routing.yml</h4>
-<pre><code class='yml'>hello_name:
-    path:     /hello/{name}
-    defaults: { _controller: FirstBundle:Hello:name }
-</code></pre>
+<h4>@FirstBundle/resources/views/Hello/name.html.twig</h4>
+<pre><code class='twig'>Hello {{name}}
+</code></pre>x
 <h4>src/DrupalCon/FirstBundle/Controller/HelloController.php</h4>
 <pre><code class='php'>public function nameAction($name) {
   return $this->render(
@@ -710,8 +709,10 @@ hello_template:
   );
 }
 </code></pre>
-<h4>@FirstBundle/resources/views/Hello/name.html.tiwg</h4>
-<pre><code class='twig'>Hello {{name}}
+<h4>src/DrupalCon/FirstBundle/Resources/config/routing.yml</h4>
+<pre><code class='yml'>hello_name:
+    path:     /hello/{name}
+    defaults: { _controller: FirstBundle:Hello:name }
 </code></pre>
 				</section>
 
